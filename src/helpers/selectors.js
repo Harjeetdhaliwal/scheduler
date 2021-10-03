@@ -1,13 +1,12 @@
 export const getAppointmentsForDay = (state, day) => {
+  
   let appointmentsArray = [];
-
   const theDay = state.days.find(individualDay => individualDay.name === day);
 
   if (!theDay) {
     return appointmentsArray;
   }
   const appointments = theDay.appointments;
-  
   for (const app of appointments) {
     appointmentsArray.push(state.appointments[app]);
   }
@@ -17,7 +16,23 @@ export const getAppointmentsForDay = (state, day) => {
 
 export const getInterview = (state, interview) => {
   if (!interview || !state) return null;
-  return {student :interview.student, interviewer : state.interviewers[interview.interviewer]};
-    
   
+  return {student :interview.student, interviewer : state.interviewers[interview.interviewer]};
+  
+}
+
+export const getInterviewersForDay = (state, day) => {
+  
+  let interviewersArray = [];
+  const theDay = state.days.find(individualDay => individualDay.name === day);
+
+  if (!theDay) {
+    return interviewersArray;
+  }
+  
+  for (const interviewer of theDay.interviewers) {
+    interviewersArray.push(state.interviewers[interviewer]);
+  }
+  
+  return interviewersArray;
 }
