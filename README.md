@@ -7,6 +7,7 @@ Create, Edit and delete appointments
 !["Gif of creating and editing appointment"](https://github.com/Harjeetdhaliwal/scheduler/blob/master/docs/appointments.gif)
 
 Error if unable to save or delete appointment
+
 !["Gif of Error page"](https://github.com/Harjeetdhaliwal/scheduler/blob/master/docs/Errorr.gif)
 
 ## Setup
