@@ -1,8 +1,8 @@
 import React from "react";
 
+//displays the error message and the close button when save or delete operation fails
 export default function Error(props) {
-
-  const {message, onClose} = props;
+  const { message, onClose } = props;
 
   return (
     <main className="appointment__card appointment__card--error">

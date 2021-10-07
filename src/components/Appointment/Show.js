@@ -1,8 +1,11 @@
 import React from "react";
 
-export default function Show(props) {
+/* show component displays each appointment with student name, 
+interviewer name and edit and delete buttons */
 
-  const {student, interviewer, onEdit, onDelete} = props;
+export default function Show(props) {
+  const { student, interviewer, onEdit, onDelete } = props;
+
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

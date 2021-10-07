@@ -1,5 +1,6 @@
 import React from "react";
 
+//renders the indicator for few seconds when appointment is saved or deleted
 export default function Status(props) {
   return (
     <main className="appointment__card appointment__card--status">

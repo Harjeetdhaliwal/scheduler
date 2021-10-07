@@ -19,12 +19,24 @@ export default function Form(props) {
     onCancel();
   };
 
+  //check if student name or interviewer is not selected and displays the appropriate message
   const validate = () => {
+    if (name === "" && !interviewer) {
+      setError("Please enter student name and select teacher");
+      return;
+    }
+
     if (name === "") {
       setError("Student name cannot be blank");
       return;
     }
 
+    if (!interviewer) {
+      setError("Please select interviewer");
+      return;
+    }
+
+    //calls onSave function if inputs are valid
     setError("");
     onSave(name, interviewer);
   };
@@ -41,10 +53,6 @@ export default function Form(props) {
             value={name}
             onChange={(event) => setName(event.target.value)}
             data-testid="student-name-input"
-
-            /*
-            This must be a controlled component
-          */
           />
         </form>
         <section className="appointment__validation">{error}</section>

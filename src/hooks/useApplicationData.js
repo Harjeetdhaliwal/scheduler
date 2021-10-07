@@ -9,6 +9,7 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
+  //requests to the api server to fetch data
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -26,6 +27,7 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
+  //adds new appointment to the interviews object and change state
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -47,6 +49,7 @@ export default function useApplicationData() {
       .then(() => updateSpots(newState));
   };
 
+  //remove the appointment and change the state
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
@@ -58,7 +61,7 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
-    //-------------NEW state with updated appointments ------------
+    //new state with updated appointments
     const newState = {
       ...state,
       appointments,
@@ -69,7 +72,9 @@ export default function useApplicationData() {
       .then((res) => updateSpots(newState, id));
   };
 
-  //-----------------------Update spots function ------------
+  /*Update spots function takes in new 
+  state when new appointment is created or deleted
+  and update the spots for that particular day*/
 
   const updateSpots = (state) => {
     const dayName = state.day;
@@ -77,6 +82,7 @@ export default function useApplicationData() {
     const dayIndex = state.days.findIndex((day) => day.name === dayName);
     const appointmentsArrayForDay = day.appointments;
 
+    //count appointments with null value for interview
     let remainingSpots = 0;
     for (const appt of appointmentsArrayForDay) {
       if (state.appointments[appt].interview === null) {
